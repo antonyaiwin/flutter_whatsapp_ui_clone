@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 10,
                 ),
               ],
-              bottom: const TabBar(
+              bottom: TabBar(
                 tabAlignment: TabAlignment.start,
                 labelPadding: EdgeInsets.zero,
                 isScrollable: true,
@@ -81,17 +81,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicatorWeight: 4,
                 tabs: [
-                  Tab(
-                    icon: Icon(Icons.groups_rounded),
+                  SizedBox(
+                    width: screenWidth * 0.1,
+                    child: const Tab(
+                      icon: Icon(Icons.groups_rounded),
+                    ),
                   ),
-                  Tab(
-                    text: 'Chats',
+                  SizedBox(
+                    width: screenWidth * 0.3,
+                    child: const Tab(
+                      text: 'Chats',
+                    ),
                   ),
-                  Tab(
-                    text: 'Status',
+                  SizedBox(
+                    width: screenWidth * 0.3,
+                    child: const Tab(
+                      text: 'Status',
+                    ),
                   ),
-                  Tab(
-                    text: 'Calls',
+                  SizedBox(
+                    width: screenWidth * 0.3,
+                    child: const Tab(
+                      text: 'Calls',
+                    ),
                   ),
                 ],
               ),
