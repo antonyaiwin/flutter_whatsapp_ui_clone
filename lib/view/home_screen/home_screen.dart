@@ -104,11 +104,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 CallsTab(),
               ],
             ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {},
-              child: Icon(floatingActionButtonIconList[
-                  DefaultTabController.of(context).index]),
-            ),
+            floatingActionButton: _tabIndex > 0
+                ? FloatingActionButton(
+                    onPressed: () {},
+                    child: Icon(floatingActionButtonIconList[_tabIndex - 1]),
+                  )
+                : null,
           );
         },
       ),
