@@ -59,6 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
               bottom: const TabBar(
+                tabAlignment: TabAlignment.start,
+                labelPadding: EdgeInsets.zero,
+                isScrollable: true,
                 dividerHeight: 0,
                 labelColor: Colors.white,
                 unselectedLabelColor: Colors.white60,
