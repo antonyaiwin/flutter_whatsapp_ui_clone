@@ -1,8 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 enum TileType {
   chat,
@@ -86,35 +84,37 @@ class ChatListItem extends StatelessWidget {
                         ),
                       ),
                     ),
-                    tileType == TileType.chat
-                        ? Text(
-                            dataItemMap['time'],
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: dataItemMap['count'] == 0
-                                  ? Colors.black54
-                                  : Colors.green,
-                            ),
-                          )
-                        : Container(),
+                    Visibility(
+                      visible: tileType == TileType.chat,
+                      child: Text(
+                        dataItemMap['time'],
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: dataItemMap['count'] == 0
+                              ? Colors.black54
+                              : Colors.green,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 Row(
                   children: [
-                    tileType == TileType.call
-                        ? Random().nextBool()
-                            ? const Icon(
-                                Icons.call_made,
-                                size: 16,
-                                color: Colors.green,
-                              )
-                            : const Icon(
-                                Icons.call_received,
-                                size: 16,
-                                color: Colors.red,
-                              )
-                        : Container(),
+                    Visibility(
+                      visible: tileType == TileType.call,
+                      child: Random().nextBool()
+                          ? const Icon(
+                              Icons.call_made,
+                              size: 16,
+                              color: Colors.green,
+                            )
+                          : const Icon(
+                              Icons.call_received,
+                              size: 16,
+                              color: Colors.red,
+                            ),
+                    ),
                     Expanded(
                       child: Text(
                         dataItemMap[tileType == TileType.chat
@@ -126,23 +126,27 @@ class ChatListItem extends StatelessWidget {
                         ),
                       ),
                     ),
-                    tileType == TileType.chat
-                        ? CircleAvatar(
-                            radius: dataItemMap['count'] == 0 ? 0 : 10,
-                            child: Text(
-                              dataItemMap['count'].toString(),
-                              style: const TextStyle(
-                                fontSize: 11,
-                              ),
-                            ),
-                          )
-                        : Container(),
+                    Visibility(
+                      visible:
+                          tileType == TileType.chat && dataItemMap['count'] > 0,
+                      child: CircleAvatar(
+                        radius: 10,
+                        child: Text(
+                          dataItemMap['count'].toString(),
+                          style: const TextStyle(
+                            fontSize: 11,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ],
             ),
           ),
-          tileType == TileType.call ? const Icon(Icons.videocam) : Container(),
+          Visibility(
+              visible: tileType == TileType.call,
+              child: const Icon(Icons.videocam))
         ],
       ),
     );
