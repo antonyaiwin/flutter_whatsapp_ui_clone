@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _tabIndex = 1;
   final List floatingActionButtonIconList = [
     Icons.message,
     Icons.camera_alt,
@@ -25,8 +26,19 @@ class _HomeScreenState extends State<HomeScreen> {
       initialIndex: 1,
       child: Builder(
         builder: (context) {
-          DefaultTabController.of(context).addListener(() {
-            setState(() {});
+          var tabController = DefaultTabController.of(context);
+          // tabController.animateTo(1);
+          tabController.addListener(() {
+            setState(() {
+              _tabIndex = tabController.index;
+            });
+          });
+          tabController.animation!.addListener(() {
+            setState(() {
+              _tabIndex = (tabController.indexIsChanging)
+                  ? tabController.index
+                  : tabController.animation!.value.round();
+            });
           });
           return Scaffold(
             appBar: AppBar(
