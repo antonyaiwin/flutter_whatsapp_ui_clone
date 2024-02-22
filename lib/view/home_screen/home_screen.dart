@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/view/home_screen/tabs/calls_tab.dart';
 import 'package:flutter_application_9/view/home_screen/tabs/chat_tab.dart';
+import 'package:flutter_application_9/view/home_screen/tabs/community_tab.dart';
 import 'package:flutter_application_9/view/home_screen/tabs/status_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,8 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
     return DefaultTabController(
-      length: 3,
+      length: 4,
+      initialIndex: 1,
       child: Builder(
         builder: (context) {
           DefaultTabController.of(context).addListener(() {
@@ -64,6 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 indicatorWeight: 4,
                 tabs: [
                   Tab(
+                    icon: Icon(Icons.groups_rounded),
+                  ),
+                  Tab(
                     text: 'Chats',
                   ),
                   Tab(
@@ -77,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             body: const TabBarView(
               children: [
+                CommunityTab(),
                 ChatTab(),
                 StatusTab(),
                 CallsTab(),
