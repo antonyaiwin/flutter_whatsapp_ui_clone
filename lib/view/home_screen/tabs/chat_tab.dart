@@ -8,7 +8,7 @@ class ChatTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        padding: const EdgeInsets.only(left: 15, right: 15, bottom: 100),
+        padding: const EdgeInsets.only(bottom: 100),
         itemBuilder: (context, index) {
           return ChatListItem(
             dataItemMap: DummyDb.dummyChatList[index],
