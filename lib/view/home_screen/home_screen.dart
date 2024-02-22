@@ -27,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Builder(
         builder: (context) {
           var tabController = DefaultTabController.of(context);
-          // tabController.animateTo(1);
           tabController.addListener(() {
             setState(() {
               _tabIndex = tabController.index;
@@ -42,32 +41,47 @@ class _HomeScreenState extends State<HomeScreen> {
           });
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: const Color.fromARGB(255, 0, 168, 132),
               title: const Text(
                 'WhatsApp',
-                style: TextStyle(color: Colors.white),
               ),
-              actions: const [
-                Icon(
-                  Icons.camera_alt_outlined,
-                  color: Colors.white,
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.camera_alt_outlined,
+                  ),
                 ),
-                SizedBox(
-                  width: 10,
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.search,
+                  ),
                 ),
-                Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.more_vert,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 10,
+                PopupMenuButton<String>(
+                  tooltip: 'More options',
+                  position: PopupMenuPosition.under,
+                  itemBuilder: (context) {
+                    return const [
+                      PopupMenuItem(
+                        child: Text('New group'),
+                      ),
+                      PopupMenuItem(
+                        child: Text('New broadcast'),
+                      ),
+                      PopupMenuItem(
+                        child: Text('Linked Devices'),
+                      ),
+                      PopupMenuItem(
+                        child: Text('Starred messages'),
+                      ),
+                      PopupMenuItem(
+                        child: Text('Payments'),
+                      ),
+                      PopupMenuItem(
+                        child: Text('Settings'),
+                      ),
+                    ];
+                  },
                 ),
               ],
               bottom: TabBar(
