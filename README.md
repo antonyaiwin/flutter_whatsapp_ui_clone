@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+## Live Preview
+
+- [Live preview](https://antonyaiwin.github.io/flutter_whatsapp_ui_clone/build/web/)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
